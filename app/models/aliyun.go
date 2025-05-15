@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 type STSConfig struct {
 	AccessKeyID     string
 	AccessKeySecret string
@@ -28,4 +30,37 @@ type OSSConfig struct {
 type CDNConfig struct {
 	Domain string
 	Key    string
+}
+
+// VideoMeta 包含从OSS返回的视频元数据
+type VideoMeta struct {
+	BasicInfo   BasicInfo   `json:"basic_info"`
+	StorageInfo StorageInfo `json:"storage_info"`
+	ContentInfo ContentInfo `json:"content_info"`
+	RequestInfo RequestInfo `json:"request_info"`
+}
+
+type BasicInfo struct {
+	FileName     string    `json:"file_name"`
+	ContentType  string    `json:"content_type"`
+	Size         int64     `json:"size"` // 字节
+	LastModified time.Time `json:"last_modified"`
+	ETag         string    `json:"etag"`
+}
+
+type StorageInfo struct {
+	ObjectType     string    `json:"object_type"`
+	StorageClass   string    `json:"storage_class"`
+	TransitionTime time.Time `json:"transition_time"` // 转储时间
+}
+
+type ContentInfo struct {
+	MD5          string `json:"md5"`
+	CRC64        string `json:"crc64"`
+	AcceptRanges string `json:"accept_ranges"`
+}
+
+type RequestInfo struct {
+	RequestID string `json:"request_id"`
+	Date      string `json:"date"`
 }
