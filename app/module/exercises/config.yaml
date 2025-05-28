@@ -1,0 +1,18 @@
+app:
+  name:        gin-exercises
+  serve_type:  https
+
+database:
+  driver:
+  host:
+  port:
+  user:
+  password:
+  dbname:
+  charset:
+
+redis:
+  host:
+  port:
+  password:
+  db:
