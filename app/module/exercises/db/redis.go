@@ -1,6 +1,6 @@
 package db
 
-import (
+/*import (
 	"fmt"
 	"gin-server/app/module/exercises/config"
 	"github.com/go-redis/redis"
@@ -34,4 +34,4 @@ func InitRedis() {
 		panic(err)
 	}
 	RedisClient = client
-}
+}*/

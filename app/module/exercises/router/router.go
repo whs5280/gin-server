@@ -16,9 +16,12 @@ func InitRouter() *gin.Engine {
 		c.String(http.StatusNotFound, "The incorrect API route.")
 	})
 
-	userGroup := router.Group("/")
+	router.GET("/", controller.Index)
+
+	apiGroup := router.Group("/examination")
 	{
-		userGroup.GET("/", controller.Index)
+		apiGroup.GET("/category", controller.CategoryIndex)
+		apiGroup.GET("/question", controller.QuestionIndex)
 	}
 
 	return router
