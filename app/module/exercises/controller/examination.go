@@ -13,6 +13,7 @@ func CategoryIndex(g *gin.Context) {
 	list, err := examService.GetCategoryList()
 	if err != nil {
 		helper.ResponseJson(g, true, "获取列表失败", err, 500)
+		return
 	}
 	helper.ResponseJson(g, false, "获取列表成功", list)
 }

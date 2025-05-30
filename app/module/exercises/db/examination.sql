@@ -48,3 +48,21 @@ CREATE TABLE exam_question_knowledge (
                                     INDEX idx_knowledge (knowledge_id) COMMENT '知识点ID索引',
                                     UNIQUE KEY uk_question_knowledge (question_id, knowledge_id) COMMENT '联合唯一约束'
 );
+
+CREATE TABLE exam_question_favorite (
+                                    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '自增主键',
+                                    user_id BIGINT NOT NULL COMMENT '用户ID，逻辑关联user.id',
+                                    question_id BIGINT NOT NULL COMMENT '题目ID，逻辑关联question.id',
+                                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                                    INDEX idx_user (user_id) COMMENT '用户ID索引',
+                                    INDEX idx_question (question_id) COMMENT '题目ID索引'
+)
+
+CREATE TABLE exam_user (
+                           id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '自增主键',
+                           nickname VARCHAR(50) NOT NULL COMMENT '用户昵称',
+                           avatar VARCHAR(200) COMMENT '用户头像',
+                           account VARCHAR(50) NOT NULL COMMENT '用户账号',
+                           password VARCHAR(100) NOT NULL COMMENT '用户密码',
+                           created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'
+)
