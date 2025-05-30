@@ -1,5 +1,7 @@
 package model
 
+import "gin-server/app/module/exercises/pagination"
+
 type ExamQuestion struct {
 	BaseModel
 	CategoryId   int                  `gorm:"type:int(11);not null" json:"category_id"`
@@ -12,19 +14,22 @@ type ExamQuestion struct {
 
 type ExamQuestionReq struct {
 	CategoryId string `form:"category_id" binding:"required"`
-	Page       int32  `form:"page,default=1"`
-	PageSize   int32  `form:"page_size,default=5"`
+	Page       int    `form:"page,default=1"`
+	PageSize   int    `form:"page_size,default=5"`
+}
+
+type ExamQuestionResp struct {
+	List       []ExamQuestion         `json:"list"`
+	Pagination *pagination.Pagination `json:"pagination"`
 }
 
 // GetQuestionByCategoryId 获取列表
 func GetQuestionByCategoryId(req ExamQuestionReq) (examQuestion []ExamQuestion, err error) {
-	query := DB.Where("category_id = ?", req.CategoryId).Preload("Options").Order("RAND()")
-
-	if req.Page > 0 {
-		query.Limit(int(req.PageSize)).Offset(int(req.PageSize * (req.Page - 1)))
-	}
-
-	err = query.Find(&examQuestion).Error
+	err = DB.Where("category_id = ?", req.CategoryId).Preload("Options").
+		Offset(req.PageSize * (req.Page - 1)).
+		Limit(req.PageSize).
+		Find(&examQuestion).
+		Error
 	return examQuestion, err
 }
 

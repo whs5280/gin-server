@@ -3,6 +3,7 @@ package service
 import (
 	"fmt"
 	"gin-server/app/module/exercises/model"
+	"gin-server/app/module/exercises/pagination"
 	"github.com/gin-gonic/gin"
 	"log"
 )
@@ -26,7 +27,7 @@ func (s *ExaminationService) GetCategoryList() ([]model.ExamCategory, error) {
 	return categories, nil
 }
 
-func (s *ExaminationService) GetQuestionByCategoryId(req model.ExamQuestionReq) ([]model.ExamQuestion, error) {
+func (s *ExaminationService) GetQuestionByCategoryId(req model.ExamQuestionReq) ([]model.ExamQuestionResp, error) {
 	questions, err := model.GetQuestionByCategoryId(req)
 	if err != nil {
 		s.logger.Printf("获取题库列表失败: %v", err)
@@ -34,8 +35,12 @@ func (s *ExaminationService) GetQuestionByCategoryId(req model.ExamQuestionReq) 
 	}
 
 	if len(questions) == 0 {
-		return []model.ExamQuestion{}, nil // 返回空切片而非nil
+		return []model.ExamQuestionResp{}, nil
 	}
 
-	return questions, nil
+	questionResp := new(model.ExamQuestionResp)
+	questionResp.List = questions
+	questionResp.Pagination = pagination.MakePagination(questions, req.Page, req.PageSize)
+
+	return []model.ExamQuestionResp{*questionResp}, nil
 }
