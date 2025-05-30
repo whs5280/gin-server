@@ -21,6 +21,18 @@ func Login(g *gin.Context) {
 	userResp := new(model.ExamUserResp)
 	userResp.Token = helper.GenerateToken(string(rune(user.ID)))
 	userResp.UserId = user.ID
+	userResp.Nickname = user.Nickname
 
 	helper.ResponseJson(g, false, "登录成功", userResp)
+}
+
+func Logout(g *gin.Context) {
+	token := g.GetHeader("token")
+	if token == "" {
+		helper.ResponseJson(g, true, "token不能为空", nil)
+		return
+	}
+
+	helper.CleanToken(token)
+	helper.ResponseJson(g, false, "退出成功", nil)
 }

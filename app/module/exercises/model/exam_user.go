@@ -1,6 +1,8 @@
 package model
 
-import "gin-server/app/module/exercises/helper"
+import (
+	"gin-server/app/module/exercises/helper"
+)
 
 type ExamUser struct {
 	BaseModel
@@ -19,7 +21,7 @@ type ExamUserResp struct {
 }
 
 func FindUser(account string, password string) (user ExamUser, err error) {
-	err = DB.Where("account = ? and password = ?", account, helper.Md5Encrypt(password)).Find(user).Error
+	err = DB.Where("account = ? and password = ?", account, helper.Md5Encrypt(password)).Find(&user).Error
 	return user, err
 }
 
