@@ -20,7 +20,7 @@ func GenerateToken(userId string) string {
 	prefix, _ := AESGCMEncrypt(userId)
 
 	db.RedisClient.SetNX(GetAuthorizeKey(userId), token, 48*time.Hour)
-	return fmt.Sprintf("%s %s", prefix, token)
+	return fmt.Sprintf("%s.%s", prefix, token)
 }
 
 func CleanToken(userId string) {
@@ -28,15 +28,17 @@ func CleanToken(userId string) {
 }
 
 func ValidToken(token string) (userId string, err error) {
-	parts := strings.Split(token, " ")
+	parts := strings.Split(token, ".")
 	prefix := parts[0]
 	userToken := parts[1]
 	userId, err = AESGCMDecrypt(prefix)
 	if err != nil {
+		fmt.Println("Failed to decrypt token:", err)
 		return "", err
 	}
 
 	if db.RedisClient.Get(GetAuthorizeKey(userId)).Val() != userToken {
+		fmt.Println("redis token not equal")
 		return "", errors.New("token is invalid")
 	}
 	return userId, nil

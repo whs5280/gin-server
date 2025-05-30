@@ -5,6 +5,7 @@ import (
 	"gin-server/app/module/exercises/model"
 	"gin-server/app/module/exercises/service"
 	"github.com/gin-gonic/gin"
+	"strconv"
 )
 
 func Login(g *gin.Context) {
@@ -19,7 +20,7 @@ func Login(g *gin.Context) {
 	}
 
 	userResp := new(model.ExamUserResp)
-	userResp.Token = helper.GenerateToken(string(rune(user.ID)))
+	userResp.Token = helper.GenerateToken(strconv.Itoa(user.ID))
 	userResp.UserId = user.ID
 	userResp.Nickname = user.Nickname
 

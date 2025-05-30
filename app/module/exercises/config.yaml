@@ -16,3 +16,6 @@ redis:
   port:
   password:
   db:
+
+aes:
+  key:        dGhpc2lzMzJiaXRsb25ncGFzc3BocmFzZWltdXNpbmc=
