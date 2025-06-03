@@ -53,6 +53,10 @@ func (s *ExaminationService) AddFav(questionId int, userId int) (err error) {
 	return model.AddFav(questionId, userId)
 }
 
-/*func (s *ExaminationService) GetFavList() ([]model.ExamQuestionResp, error) {
-	return model.ExamQuestionResp{}, error()
-}*/
+func (s *ExaminationService) DelFav(questionId int, userId int) (err error) {
+	return model.DelFav(questionId, userId)
+}
+
+func (s *ExaminationService) GetFavList(req model.ExamQuestionFavReq) ([]model.ExamQuestionFav, error) {
+	return model.GetFavList(req)
+}

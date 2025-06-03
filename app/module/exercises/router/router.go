@@ -31,6 +31,8 @@ func InitRouter() *gin.Engine {
 		apiGroup.GET("/category", controller.CategoryIndex)
 		apiGroup.GET("/question", controller.QuestionIndex)
 		apiGroup.GET("/addFav", controller.AddFav)
+		apiGroup.GET("/delFav", controller.DelFav)
+		apiGroup.GET("/favList", controller.FavList)
 	}
 
 	return router

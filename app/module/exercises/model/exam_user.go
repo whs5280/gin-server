@@ -1,7 +1,10 @@
 package model
 
 import (
+	"errors"
+	"fmt"
 	"gin-server/app/module/exercises/helper"
+	"github.com/jinzhu/gorm"
 )
 
 type ExamUser struct {
@@ -21,7 +24,10 @@ type ExamUserResp struct {
 }
 
 func FindUser(account string, password string) (user ExamUser, err error) {
-	err = DB.Where("account = ? and password = ?", account, helper.Md5Encrypt(password)).Find(&user).Error
+	err = DB.Where("account = ? and password = ?", account, helper.Md5Encrypt(password)).First(&user).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return user, fmt.Errorf("用户不存在或密码错误")
+	}
 	return user, err
 }
 
