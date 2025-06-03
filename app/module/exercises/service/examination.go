@@ -44,3 +44,15 @@ func (s *ExaminationService) GetQuestionByCategoryId(req model.ExamQuestionReq) 
 
 	return []model.ExamQuestionResp{*questionResp}, nil
 }
+
+func (s *ExaminationService) IsFav(questionId int, userId int) (bool, error) {
+	return model.IsFav(questionId, userId)
+}
+
+func (s *ExaminationService) AddFav(questionId int, userId int) (err error) {
+	return model.AddFav(questionId, userId)
+}
+
+/*func (s *ExaminationService) GetFavList() ([]model.ExamQuestionResp, error) {
+	return model.ExamQuestionResp{}, error()
+}*/

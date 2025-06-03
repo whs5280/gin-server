@@ -5,6 +5,7 @@ import (
 	"gin-server/app/module/exercises/model"
 	"gin-server/app/module/exercises/service"
 	"github.com/gin-gonic/gin"
+	"strconv"
 )
 
 func CategoryIndex(g *gin.Context) {
@@ -32,4 +33,22 @@ func QuestionIndex(g *gin.Context) {
 		helper.ResponseJson(g, true, "获取列表失败", err, 500)
 	}
 	helper.ResponseJson(g, false, "获取列表成功", list)
+}
+
+func AddFav(g *gin.Context) {
+	examService := service.ExaminationService{G: g}
+	questionId, _ := strconv.Atoi(g.Query("question_id"))
+	userId := helper.CommonGetUserId(g)
+
+	isFav, _ := examService.IsFav(questionId, userId)
+	if isFav {
+		helper.ResponseJson(g, true, "已收藏", nil, 422)
+		return
+	}
+
+	err := examService.AddFav(questionId, userId)
+	if err != nil {
+		helper.ResponseJson(g, true, "添加失败", err, 500)
+	}
+	helper.ResponseJson(g, false, "添加成功", nil)
 }
