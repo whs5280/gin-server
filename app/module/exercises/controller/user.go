@@ -5,6 +5,7 @@ import (
 	"gin-server/app/module/exercises/model"
 	"gin-server/app/module/exercises/service"
 	"github.com/gin-gonic/gin"
+	"net/http"
 	"strconv"
 )
 
@@ -13,13 +14,13 @@ func Register(g *gin.Context) {
 
 	var req model.ExamUserRegisterReq
 	if err := g.ShouldBindQuery(&req); err != nil {
-		helper.ResponseJson(g, true, "参数错误", err, 422)
+		helper.ResponseJson(g, true, "参数错误", err, http.StatusFailedDependency)
 		return
 	}
 
 	user, err := userService.Register(req)
 	if err != nil {
-		helper.ResponseJson(g, true, "注册失败", err)
+		g.Error(err)
 		return
 	}
 
@@ -33,12 +34,16 @@ func Register(g *gin.Context) {
 
 func Login(g *gin.Context) {
 	userService := service.UserService{G: g}
-	account := g.Query("account")
-	password := g.Query("password")
 
-	user, err := userService.Login(account, password)
+	var req model.ExamUserLoginReq
+	if err := g.ShouldBindQuery(&req); err != nil {
+		helper.ResponseJson(g, true, "参数错误", err, http.StatusFailedDependency)
+		return
+	}
+
+	user, err := userService.Login(req)
 	if err != nil {
-		helper.ResponseJson(g, true, "登录失败", err)
+		g.Error(err)
 		return
 	}
 
@@ -53,7 +58,7 @@ func Login(g *gin.Context) {
 func Logout(g *gin.Context) {
 	token := g.GetHeader("token")
 	if token == "" {
-		helper.ResponseJson(g, true, "token不能为空", nil)
+		helper.ResponseJson(g, true, "token不能为空", nil, http.StatusFailedDependency)
 		return
 	}
 

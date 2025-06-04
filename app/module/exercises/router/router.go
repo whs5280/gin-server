@@ -45,4 +45,5 @@ func loadDefaultMiddleware(router *gin.Engine) {
 	router.Use(gin.Recovery())
 	router.Use(middleware.NoCache)
 	router.Use(middleware.Options)
+	router.Use(middleware.ErrorHandler())
 }

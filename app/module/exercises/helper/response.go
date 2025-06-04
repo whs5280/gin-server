@@ -5,6 +5,16 @@ import (
 	"net/http"
 )
 
+type BusinessError struct {
+	Code    int
+	Message string
+	Err     error
+}
+
+func (e *BusinessError) Error() string {
+	return e.Message
+}
+
 type JSONErrorResponse struct {
 	Error   bool
 	Message string

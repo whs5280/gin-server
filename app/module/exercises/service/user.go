@@ -10,17 +10,9 @@ type UserService struct {
 }
 
 func (usv UserService) Register(req model.ExamUserRegisterReq) (u model.ExamUser, err error) {
-	u, err = model.Register(req)
-	if err != nil {
-		return
-	}
-	return u, nil
+	return model.Register(req)
 }
 
-func (usv UserService) Login(account string, password string) (u model.ExamUser, err error) {
-	s, err := model.FindUser(account, password)
-	if err != nil {
-		return
-	}
-	return s, nil
+func (usv UserService) Login(req model.ExamUserLoginReq) (u model.ExamUser, err error) {
+	return model.FindUser(req)
 }
