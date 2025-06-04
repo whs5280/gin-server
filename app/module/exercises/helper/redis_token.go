@@ -19,7 +19,7 @@ func GenerateToken(userId string) string {
 	token := base64.URLEncoding.EncodeToString([]byte(data))
 	prefix, _ := AESGCMEncrypt(userId)
 
-	db.RedisClient.SetNX(GetAuthorizeKey(userId), token, 48*time.Hour)
+	db.RedisClient.Set(GetAuthorizeKey(userId), token, 48*time.Hour)
 	return fmt.Sprintf("%s.%s", prefix, token)
 }
 

@@ -21,6 +21,7 @@ func InitRouter() *gin.Engine {
 
 	userGroup := router.Group("/user")
 	{
+		userGroup.GET("/register", controller.Register)
 		userGroup.GET("/login", controller.Login)
 		userGroup.GET("/logout", controller.Logout)
 	}

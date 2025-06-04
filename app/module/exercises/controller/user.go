@@ -8,6 +8,29 @@ import (
 	"strconv"
 )
 
+func Register(g *gin.Context) {
+	userService := service.UserService{G: g}
+
+	var req model.ExamUserRegisterReq
+	if err := g.ShouldBindQuery(&req); err != nil {
+		helper.ResponseJson(g, true, "参数错误", err, 422)
+		return
+	}
+
+	user, err := userService.Register(req)
+	if err != nil {
+		helper.ResponseJson(g, true, "注册失败", err)
+		return
+	}
+
+	userResp := new(model.ExamUserResp)
+	userResp.UserId = user.ID
+	userResp.Nickname = user.Nickname
+	userResp.Avatar = user.Avatar
+
+	helper.ResponseJson(g, false, "注册成功", userResp)
+}
+
 func Login(g *gin.Context) {
 	userService := service.UserService{G: g}
 	account := g.Query("account")
