@@ -19,21 +19,24 @@ func InitRouter() *gin.Engine {
 
 	router.GET("/", controller.Index)
 
-	userGroup := router.Group("/user")
+	// API 路由组
+	apiRouter := router.Group("/api")
 	{
-		userGroup.GET("/register", controller.Register)
-		userGroup.GET("/login", controller.Login)
-		userGroup.GET("/logout", controller.Logout)
-	}
-
-	apiGroup := router.Group("/examination").
-		Use(middleware.CheckToken)
-	{
-		apiGroup.GET("/category", controller.CategoryIndex)
-		apiGroup.GET("/question", controller.QuestionIndex)
-		apiGroup.GET("/addFav", controller.AddFav)
-		apiGroup.GET("/delFav", controller.DelFav)
-		apiGroup.GET("/favList", controller.FavList)
+		userGroup := apiRouter.Group("/user")
+		{
+			userGroup.GET("/register", controller.Register)
+			userGroup.GET("/login", controller.Login)
+			userGroup.GET("/logout", controller.Logout)
+		}
+		examGroup := apiRouter.Group("/examination").
+			Use(middleware.CheckToken)
+		{
+			examGroup.GET("/category", controller.CategoryIndex)
+			examGroup.GET("/question", controller.QuestionIndex)
+			examGroup.GET("/addFav", controller.AddFav)
+			examGroup.GET("/delFav", controller.DelFav)
+			examGroup.GET("/favList", controller.FavList)
+		}
 	}
 
 	return router
