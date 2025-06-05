@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HLS Player</title>
+    <script src="static/js/hls.js"></script>
+</head>
+<body>
+<video id="video" controls width="640"></video>
+
+<script>
+    const video = document.getElementById('video');
+    const videoUrl = "m3u8/9580b9b06c_hls/playlist.m3u8";
+
+    if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.ERROR, (event, data) => {
+            console.error('HLS Error:', data);
+        });
+    }
+    else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoUrl; // Safari原生支持
+    }
+</script>
+</body>
+</html>

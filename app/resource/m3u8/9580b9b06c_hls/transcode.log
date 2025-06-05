@@ -1,0 +1,81 @@
+ffmpeg version n5.1.6-20240815 Copyright (c) 2000-2024 the FFmpeg developers
+  built with gcc 14.2.0 (crosstool-NG 1.26.0.106_ed12fa6)
+  configuration: --prefix=/ffbuild/prefix --pkg-config-flags=--static --pkg-config=pkg-config --cross-prefix=x86_64-w64-mingw32- --arch=x86_64 --target-os=mingw32 --enable-gpl --enable-version3 --disable-debug --disable-w32threads --enable-pthreads --enable-iconv --enable-zlib --enable-libfreetype --enable-libfribidi --enable-gmp --enable-libxml2 --enable-lzma --enable-fontconfig --enable-libvorbis --enable-opencl --disable-libpulse --enable-libvmaf --disable-libxcb --disable-xlib --enable-amf --enable-libaom --enable-libaribb24 --enable-avisynth --disable-chromaprint --enable-libdav1d --enable-libdavs2 --disable-libfdk-aac --enable-ffnvcodec --enable-cuda-llvm --enable-frei0r --enable-libgme --enable-libkvazaar --enable-libass --enable-libbluray --disable-libjxl --enable-libmp3lame --enable-libopus --enable-librist --enable-libssh --enable-libtheora --enable-libvpx --enable-libwebp --enable-libzmq --enable-lv2 --disable-openal --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenh264 --enable-libopenjpeg --enable-libopenmpt --enable-librav1e --enable-librubberband --enable-schannel --enable-sdl2 --enable-libsoxr --enable-libsrt --enable-libsvtav1 --enable-libtwolame --enable-libuavs3d --disable-libdrm --disable-vaapi --enable-libvidstab --enable-vulkan --enable-libshaderc --disable-libplacebo --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxvid --enable-libzimg --enable-libzvbi --extra-cflags=-DLIBTWOLAME_STATIC --extra-cxxflags= --extra-libs=-lgomp --extra-ldflags=-pthread --extra-ldexeflags= --cc=x86_64-w64-mingw32-gcc --cxx=x86_64-w64-mingw32-g++ --ar=x86_64-w64-mingw32-gcc-ar --ranlib=x86_64-w64-mingw32-gcc-ranlib --nm=x86_64-w64-mingw32-gcc-nm --extra-version=20240815
+  libavutil      57. 28.100 / 57. 28.100
+  libavcodec     59. 37.100 / 59. 37.100
+  libavformat    59. 27.100 / 59. 27.100
+  libavdevice    59.  7.100 / 59.  7.100
+  libavfilter     8. 44.100 /  8. 44.100
+  libswscale      6.  7.100 /  6.  7.100
+  libswresample   4.  7.100 /  4.  7.100
+  libpostproc    56.  6.100 / 56.  6.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '../resource/m3u8/9580b9b06c.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    date            : UTC 2023-04-19 05:05:34
+    encoder         : www.aliyun.com - Media Transcoding
+  Duration: 00:00:33.11, start: 0.000000, bitrate: 2084 kb/s
+  Stream #0:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x1706 [SAR 1:1 DAR 640:853], 1955 kb/s, 25 fps, 25 tbr, 12800 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 0000012d55ac0b00] using SAR=1/1
+[libx264 @ 0000012d55ac0b00] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0000012d55ac0b00] profile High, level 4.2, 4:2:0, 8-bit
+[libx264 @ 0000012d55ac0b00] 264 - core 164 - H.264/MPEG-4 AVC codec - Copyleft 2003-2024 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=18 lookahead_threads=3 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, hls, to '..\resource\m3u8\9580b9b06c_hls\playlist.m3u8':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    date            : UTC 2023-04-19 05:05:34
+    encoder         : Lavf59.27.100
+  Stream #0:0(und): Video: h264, yuv420p(tv, bt709, progressive), 1280x1706 [SAR 1:1 DAR 640:853], q=2-31, 25 fps, 90k tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc59.37.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1(und): Audio: aac (LC), 44100 Hz, stereo, fltp, 128 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc59.37.100 aac
+frame=    1 fps=0.0 q=0.0 size=N/A time=00:00:00.44 bitrate=N/A speed=17.4x    frame=   81 fps=0.0 q=28.0 size=N/A time=00:00:03.66 bitrate=N/A speed=6.93x    frame=  133 fps=129 q=28.0 size=N/A time=00:00:05.75 bitrate=N/A speed=5.59x    frame=  193 fps=125 q=28.0 size=N/A time=00:00:08.15 bitrate=N/A speed=5.29x    frame=  240 fps=117 q=28.0 size=N/A time=00:00:10.03 bitrate=N/A speed=4.91x    frame=  287 fps=113 q=28.0 size=N/A time=00:00:11.91 bitrate=N/A speed=4.67x    [hls @ 0000012d55ac00c0] Opening '..\resource\m3u8\9580b9b06c_hls\segment_000.ts' for writing
+[hls @ 0000012d55ac00c0] Opening '..\resource\m3u8\9580b9b06c_hls\playlist.m3u8.tmp' for writing
+frame=  356 fps=116 q=28.0 size=N/A time=00:00:14.67 bitrate=N/A speed= 4.8x    frame=  408 fps=115 q=28.0 size=N/A time=00:00:16.74 bitrate=N/A speed= 4.7x    frame=  460 fps=113 q=28.0 size=N/A time=00:00:18.83 bitrate=N/A speed=4.63x    frame=  511 fps=111 q=28.0 size=N/A time=00:00:20.87 bitrate=N/A speed=4.55x    frame=  550 fps=107 q=28.0 size=N/A time=00:00:22.43 bitrate=N/A speed=4.38x    [hls @ 0000012d55ac00c0] Opening '..\resource\m3u8\9580b9b06c_hls\segment_001.ts' for writing
+[hls @ 0000012d55ac00c0] Opening '..\resource\m3u8\9580b9b06c_hls\playlist.m3u8.tmp' for writing
+frame=  583 fps=103 q=28.0 size=N/A time=00:00:23.75 bitrate=N/A speed=4.21x    frame=  627 fps=102 q=28.0 size=N/A time=00:00:25.51 bitrate=N/A speed=4.15x    frame=  666 fps=100 q=28.0 size=N/A time=00:00:27.07 bitrate=N/A speed=4.07x    frame=  720 fps=101 q=28.0 size=N/A time=00:00:29.23 bitrate=N/A speed=4.09x    frame=  765 fps=100 q=28.0 size=N/A time=00:00:31.02 bitrate=N/A speed=4.05x    frame=  823 fps=100 q=28.0 size=N/A time=00:00:33.04 bitrate=N/A speed=4.03x    [hls @ 0000012d55ac00c0] Opening '..\resource\m3u8\9580b9b06c_hls\segment_002.ts' for writing
+[hls @ 0000012d55ac00c0] Opening '..\resource\m3u8\9580b9b06c_hls\playlist.m3u8.tmp' for writing
+frame=  826 fps= 97 q=-1.0 Lsize=N/A time=00:00:33.08 bitrate=N/A speed=3.87x    
+video:6233kB audio:520kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+[libx264 @ 0000012d55ac0b00] frame I:5     Avg QP:15.20  size:148626
+[libx264 @ 0000012d55ac0b00] frame P:289   Avg QP:19.94  size: 15323
+[libx264 @ 0000012d55ac0b00] frame B:532   Avg QP:20.61  size:  2274
+[libx264 @ 0000012d55ac0b00] consecutive B-frames: 11.4%  5.1%  9.4% 74.1%
+[libx264 @ 0000012d55ac0b00] mb I  I16..4: 31.6% 29.9% 38.5%
+[libx264 @ 0000012d55ac0b00] mb P  I16..4:  4.1%  6.2%  1.8%  P16..4: 14.1%  1.7%  1.0%  0.0%  0.0%    skip:71.1%
+[libx264 @ 0000012d55ac0b00] mb B  I16..4:  0.7%  0.8%  0.0%  B16..8:  8.6%  0.3%  0.1%  direct: 1.1%  skip:88.3%  L0:42.2% L1:54.3% BI: 3.5%
+[libx264 @ 0000012d55ac0b00] 8x8 transform intra:49.4% inter:64.2%
+[libx264 @ 0000012d55ac0b00] coded y,uvDC,uvAC intra: 36.9% 38.7% 9.0% inter: 3.0% 3.5% 0.1%
+[libx264 @ 0000012d55ac0b00] i16 v,h,dc,p: 45% 23%  9% 23%
+[libx264 @ 0000012d55ac0b00] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 41% 21% 20%  2%  3%  3%  3%  3%  3%
+[libx264 @ 0000012d55ac0b00] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 37% 22% 10%  4%  6%  6%  6%  6%  5%
+[libx264 @ 0000012d55ac0b00] i8c dc,h,v,p: 56% 18% 24%  3%
+[libx264 @ 0000012d55ac0b00] Weighted P-Frames: Y:0.3% UV:0.3%
+[libx264 @ 0000012d55ac0b00] ref P L0: 75.2%  9.1% 11.8%  3.8%  0.0%
+[libx264 @ 0000012d55ac0b00] ref B L0: 84.9% 12.1%  3.0%
+[libx264 @ 0000012d55ac0b00] ref B L1: 96.4%  3.6%
+[libx264 @ 0000012d55ac0b00] kb/s:1545.15
+[aac @ 0000012d536f1a00] Qavg: 970.799
