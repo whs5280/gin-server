@@ -62,6 +62,7 @@ func Register(req ExamUserRegisterReq) (user ExamUser, err error) {
 	user.Account = req.Account
 	user.Password = helper.Md5Encrypt(req.Password)
 	user.Avatar = "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif"
+	user.CreatedAt = helper.GetNowTime()
 	err = DB.Create(&user).Error
 	return user, err
 }
