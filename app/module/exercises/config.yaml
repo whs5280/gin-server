@@ -1,6 +1,7 @@
 app:
   name:        gin-exercises
   serve_type:  https
+  debug:       false
 
 database:
   driver:
