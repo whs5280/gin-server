@@ -15,7 +15,7 @@ func main() {
 	}
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("Welcome to, game start！")
+	fmt.Println(model.WelcomeMessage)
 
 	var lastIdiom string
 	var lastChar string
@@ -41,7 +41,7 @@ func main() {
 		}
 
 		if lastChar != "" && !strings.HasPrefix(input, lastChar) {
-			fmt.Printf(model.NextMessage, lastIdiom, lastChar)
+			fmt.Printf(model.NextMessage, lastChar)
 			continue
 		}
 
@@ -62,6 +62,6 @@ func main() {
 
 		lastIdiom = computerIdiom
 		lastChar = computerLastChar
-		usedIdioms[computerIdiom] = true
+		usedIdioms[lastIdiom] = true
 	}
 }
