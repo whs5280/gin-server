@@ -13,7 +13,7 @@ import (
 var idiomDB = map[string]bool{}
 
 func InitIdiomDB() error {
-	absPath, err := filepath.Abs(model.IdiomDBPath)
+	absPath, err := filepath.Abs(model.PurifiedPath)
 	if err != nil {
 		return err
 	}
@@ -32,11 +32,12 @@ func InitIdiomDB() error {
 
 	idiomDB = make(map[string]bool)
 	for _, idiom := range data.Idioms {
-		if utf8.RuneCountInString(idiom) == 4 {
+		idiomDB[idiom] = true
+		/*if utf8.RuneCountInString(idiom) == 4 {
 			idiomDB[idiom] = true
 		} else {
 			fmt.Printf("警告: 忽略非四字成语 '%s'\n", idiom)
-		}
+		}*/
 	}
 
 	fmt.Printf("成功加载 %d 个成语\n", len(idiomDB))
@@ -54,10 +55,8 @@ func IsValidIdiom(idiom string) bool {
 	if utf8.RuneCountInString(idiom) != 4 {
 		return false
 	}
-	return true
-	// 是否在词库内
-	// _, exists := idiomDB[idiom]
-	// return exists
+	_, exists := idiomDB[idiom]
+	return exists
 }
 
 // FindMatchingIdioms 根据首字查找可接的成语
