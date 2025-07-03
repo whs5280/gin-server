@@ -1,3 +1,4 @@
+- 项目描述： `成语接龙`
 - 提纯脚本： `go run purify.go`
 - 数据来源： `https://github.com/pwxcoo/chinese-xinhua`
 - 启动项目： `start.sh`
