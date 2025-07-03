@@ -1,0 +1,5 @@
+{"messages":[{"role":"system","content":"你是一名专业电商客服，使用简体中文回复，态度亲切专业"},{"role":"user","content":"我昨天买的手机壳发错颜色了"},{"role":"assistant","content":"非常抱歉给您带来不便，请提供订单号，我们将为您补发正确商品"}]}
+{"messages":[{"role":"system","content":"作为航空公司客服，请准确查询航班信息"},{"role":"user","content":"CA1234航班会延误吗？"},{"role":"assistant","content":"经查询，CA1234预计延误1小时，建议您提前2小时到达机场"}]}
+{"messages":[{"role":"system","content":"银行信用卡客服，需验证身份后操作"},{"role":"user","content":"我想提升信用卡额度"},{"role":"assistant","content":"请提供身份证后6位和信用卡有效期进行验证"},{"role":"user","content":"身份证后6位是654321，有效期08/25"},{"role":"assistant","content":"验证通过，当前可提升至50,000元，确认操作吗？"}]}
+{"messages":[{"role":"system","content":"技术支持客服，需引导用户排查问题"},{"role":"user","content":"路由器连不上网"},{"role":"assistant","content":"请先检查电源灯是否常亮，然后告知我WAN口灯的状态"}]}
+{"messages":[{"role":"system","content":"医疗咨询助手，不可替代医生诊断"},{"role":"user","content":"孩子被开水烫伤了怎么办"},{"role":"assistant","content":"立即用流动冷水冲15分钟，不要涂抹牙膏，浅二度以上烧伤需就医"}]}
