@@ -24,8 +24,8 @@ const (
 
 var (
 	redisClient = redis.NewClient(&redis.Options{
-		Addr:     "r-bp1u7zhpk8qbntsxmspd.redis.rds.aliyuncs.com:6379",
-		Password: "aFO8wFOl1m1ffZGi",
+		Addr:     "",
+		Password: "",
 		DB:       1,
 	})
 	// jwtSecret := []byte("0a0cdfbf-1385-4019-92e5-696855b5af3a")
