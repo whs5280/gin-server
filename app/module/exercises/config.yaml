@@ -20,3 +20,6 @@ redis:
 
 aes:
   key:        dGhpc2lzMzJiaXRsb25ncGFzc3BocmFzZWltdXNpbmc=
+
+jwt:
+  secret:     0a0cdfbf-1385-4019-92e5-696855b5af3a
