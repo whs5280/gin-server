@@ -1,0 +1,1 @@
+cd cmd && go build -o chat.exe main.go
