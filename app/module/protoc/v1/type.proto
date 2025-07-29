@@ -1,0 +1,16 @@
+// 定义项目 API 的 proto 文件 可以同时描述 gRPC API
+// protobuf 文件参考:
+//  - https://developers.google.com/protocol-buffers/
+syntax = "proto3";
+package local.v1;
+// package 命名使用 {appid}.{version} 的方式, version 形如 v1, v2 ..
+
+option go_package = "../v1/out";
+
+// protoc --proto_path=./ --micro_out=. --go_out=. *.proto
+enum TypeHello {
+  UnUse = 0;
+  Morning = 1;
+  Afternoon = 2;
+  Evening = 3;
+}

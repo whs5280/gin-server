@@ -1,0 +1,24 @@
+// 定义项目 API 的 proto 文件 可以同时描述 gRPC API
+// protobuf 文件参考:
+//  - https://developers.google.com/protocol-buffers/
+syntax = "proto3";
+package local.v1;
+// package 命名使用 {appid}.{version} 的方式, version 形如 v1, v2 ..
+
+import "type.proto";
+
+option go_package = "../v1/out";
+
+// protoc --proto_path=. --go_out=paths=source_relative:. --micro_out=paths=source_relative:. -I=../v1 *.proto
+service Demo {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  TypeHello hello = 2;
+  string message = 1;
+}
